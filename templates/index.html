@@ -5,210 +5,226 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VPA — Virtual Personal Assistant</title>
   <link rel="stylesheet" href="/static/css/style.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAV ── -->
 <nav class="nav" id="nav">
-  <div class="nav-logo">VPA<span class="dot">.</span></div>
+  <div class="nav-logo">VPA.</div>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
+    <li><a href="#arch">How It Works</a></li>
     <li><a href="#demo">Chat</a></li>
     <li><a href="#dashboard">Dashboard</a></li>
-    <li><a href="#about">About</a></li>
   </ul>
-  <div class="nav-status" id="navStatus">
-    <span class="status-dot"></span> ML Model Online
+  <div class="nav-pill">
+    <div class="nav-pill-dot"></div>
+    ML Model Online
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
+  <div class="hero-canvas">
     <div class="hero-grid"></div>
-    <div class="hero-glow g1"></div>
-    <div class="hero-glow g2"></div>
   </div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span> Python + Flask + Machine Learning</div>
+  <div class="hero-inner container">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      Python · Flask · Machine Learning
+    </div>
     <h1 class="hero-title">
-      <span>Virtual</span>
-      <span class="gold">Personal</span>
-      <span>Assistant</span>
+      <span class="line-1">Virtual</span>
+      <span class="line-2">Personal</span>
+      <span class="line-3">Assistant</span>
     </h1>
-    <p class="hero-sub">
-      Real ML model running live in the browser. 
-      Type any command — the Python backend classifies your intent using 
+    <p class="hero-desc">
+      A real ML model running live in the browser. Type any command — 
+      the Python backend classifies your intent using 
       <strong>TF-IDF + Logistic Regression</strong> and responds instantly.
     </p>
-    <div class="hero-btns">
-      <a href="#demo" class="btn-primary">Try the Chat</a>
-      <a href="#dashboard" class="btn-ghost">View Dashboard</a>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-violet">
+        Try the Chat
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#arch" class="btn-outline">How it works</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="snum" id="s1">—</span><span class="slabel">Model Accuracy</span></div>
-      <div class="sdiv"></div>
-      <div class="stat"><span class="snum" id="s2">—</span><span class="slabel">Intents</span></div>
-      <div class="sdiv"></div>
-      <div class="stat"><span class="snum">&lt;1s</span><span class="slabel">Response</span></div>
+      <div class="hstat">
+        <span class="hstat-val" id="s1">91%</span>
+        <span class="hstat-label">CV Accuracy</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-val" id="s2">13</span>
+        <span class="hstat-label">Intents</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-val">&lt; 1s</span>
+        <span class="hstat-label">Response</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-val">100%</span>
+        <span class="hstat-label">Train Acc</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how" id="about">
+<!-- ── ARCHITECTURE ── -->
+<section class="arch-section" id="arch">
   <div class="container">
-    <div class="stag">Architecture</div>
-    <h2>How the <em>Connection</em> Works</h2>
-    <div class="arch-flow">
-      <div class="arch-box browser">
-        <div class="arch-icon">🌐</div>
-        <div class="arch-name">Browser</div>
+    <div class="section-head reveal">
+      <div class="tag">Architecture</div>
+      <h2>How the <em>Connection</em> Works</h2>
+      <p>Three layers working together — browser, Flask bridge, and Python ML model — all communicating through JSON over HTTP.</p>
+    </div>
+
+    <div class="arch-flow reveal">
+      <div class="arch-box ab-browser">
+        <span class="arch-icon">🌐</span>
+        <div class="arch-label">Browser</div>
         <div class="arch-tech">HTML + CSS + JS</div>
-        <div class="arch-desc">You type a command here. JavaScript sends it to Flask.</div>
+        <div class="arch-desc">You type a command. JavaScript sends it to Flask via fetch() POST request.</div>
       </div>
-      <div class="arch-arrow">
-        <div class="arr-line"></div>
-        <div class="arr-label">fetch("/chat", POST)</div>
-        <div class="arr-line"></div>
+      <div class="arch-connector">
+        <div class="conn-arrow"></div>
+        <div class="conn-label">fetch("/chat")</div>
       </div>
-      <div class="arch-box flask">
-        <div class="arch-icon">⚗️</div>
-        <div class="arch-name">Flask</div>
-        <div class="arch-tech">app.py — The Bridge</div>
-        <div class="arch-desc">Receives the command. Passes it to the ML model. Returns JSON.</div>
+      <div class="arch-box ab-flask">
+        <span class="arch-icon">⚗️</span>
+        <div class="arch-label">Flask</div>
+        <div class="arch-tech">app.py — Bridge</div>
+        <div class="arch-desc">Receives the command, passes it to the ML model, returns JSON to the browser.</div>
       </div>
-      <div class="arch-arrow">
-        <div class="arr-line"></div>
-        <div class="arr-label">model.predict()</div>
-        <div class="arr-line"></div>
+      <div class="arch-connector">
+        <div class="conn-arrow"></div>
+        <div class="conn-label">model.predict()</div>
       </div>
-      <div class="arch-box ml">
-        <div class="arch-icon">🧠</div>
-        <div class="arch-name">ML Model</div>
-        <div class="arch-tech">TF-IDF + Logistic Regression</div>
-        <div class="arch-desc">Classifies intent. Returns response text + confidence score.</div>
+      <div class="arch-box ab-ml">
+        <span class="arch-icon">🧠</span>
+        <div class="arch-label">ML Model</div>
+        <div class="arch-tech">TF-IDF + Logistic Reg</div>
+        <div class="arch-desc">Classifies intent from text. Returns intent label + confidence score.</div>
       </div>
     </div>
 
-    <div class="code-example">
-      <div class="code-tabs">
-        <button class="tab active" data-tab="js">JavaScript (sends)</button>
-        <button class="tab" data-tab="flask">Flask (receives)</button>
-        <button class="tab" data-tab="python">Python ML (processes)</button>
+    <div class="code-block reveal">
+      <div class="code-tabs-bar">
+        <button class="ctab active" data-tab="js">JavaScript (sends)</button>
+        <button class="ctab" data-tab="flask">Flask (receives)</button>
+        <button class="ctab" data-tab="ml">Python ML (predicts)</button>
       </div>
-      <div class="code-body" id="codeBody">
-<pre id="tab-js">// script.js — browser sends the command to Flask
-const response = await fetch("/chat", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ message: "report defect on line 3" })
+      <div class="code-content">
+        <pre class="active" id="tab-js"><span class="c-dim">// script.js — browser sends command to Flask</span>
+<span class="c-purple">const</span> response = <span class="c-cyan">await</span> fetch(<span class="c-amber">"/chat"</span>, {
+  method: <span class="c-amber">"POST"</span>,
+  headers: { <span class="c-amber">"Content-Type"</span>: <span class="c-amber">"application/json"</span> },
+  body: JSON.stringify({ message: <span class="c-amber">"report defect on line 3"</span> })
 });
-const data = await response.json();
-// data = { intent: "report_defect", confidence: 72.4, response: "..." }
+<span class="c-purple">const</span> data = <span class="c-cyan">await</span> response.json();
+<span class="c-dim">// data = { intent: "report_defect", confidence: 73.0, response: "..." }</span>
 showMessage(data.response, data.intent, data.confidence);</pre>
 
-<pre id="tab-flask" style="display:none">// app.py — Flask receives and routes
-@app.route("/chat", methods=["POST"])
-def chat():
+        <pre id="tab-flask"><span class="c-dim"># app.py — Flask receives and routes to ML</span>
+<span class="c-purple">@app</span>.route(<span class="c-amber">"/chat"</span>, methods=[<span class="c-amber">"POST"</span>])
+<span class="c-cyan">def</span> <span class="c-green">chat</span>():
     data    = request.get_json()
-    message = data.get("message", "").lower()
-    
-    # Pass to ML model
+    message = data.get(<span class="c-amber">"message"</span>, <span class="c-amber">""</span>).lower()
+
     intent, confidence = model.predict(message)
     response           = model.get_response(intent, message)
-    
-    # Send back to browser as JSON
-    return jsonify({
-        "intent":     intent,       # "report_defect"
-        "confidence": confidence,   # 72.4
-        "response":   response      # "Defect saved! Report ID: #4821..."
+
+    <span class="c-cyan">return</span> jsonify({
+        <span class="c-amber">"intent"</span>:     intent,      <span class="c-dim"># "report_defect"</span>
+        <span class="c-amber">"confidence"</span>: confidence,  <span class="c-dim"># 73.0</span>
+        <span class="c-amber">"response"</span>:   response     <span class="c-dim"># "Defect saved! ID #4821..."</span>
     })</pre>
 
-<pre id="tab-python" style="display:none"># ML model classifies the intent
-def predict(self, command):
-    intent     = self.pipeline.predict([command])[0]
-    proba      = self.pipeline.predict_proba([command])[0]
+        <pre id="tab-ml"><span class="c-dim"># ML model — TF-IDF + Logistic Regression</span>
+<span class="c-cyan">def</span> <span class="c-green">predict</span>(<span class="c-purple">self</span>, command):
+    intent     = <span class="c-purple">self</span>.pipeline.predict([command])[<span class="c-amber">0</span>]
+    proba      = <span class="c-purple">self</span>.pipeline.predict_proba([command])[<span class="c-amber">0</span>]
     confidence = max(proba)
-    # Normalize: (raw - 1/n_classes) / (1 - 1/n_classes)
-    n = len(self.pipeline.classes_)
-    normalized = (confidence - 1/n) / (1 - 1/n)
-    return intent, round(normalized * 100, 1)
-    # Returns: ("report_defect", 72.4)</pre>
+
+    <span class="c-dim"># Normalize: removes bias from number of classes</span>
+    n          = len(<span class="c-purple">self</span>.pipeline.classes_)
+    normalized = (confidence - <span class="c-amber">1</span>/n) / (<span class="c-amber">1</span> - <span class="c-amber">1</span>/n)
+    <span class="c-cyan">return</span> intent, round(normalized * <span class="c-amber">100</span>, <span class="c-amber">1</span>)
+    <span class="c-dim"># → ("report_defect", 73.0)</span></pre>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LIVE CHAT DEMO -->
-<section class="demo" id="demo">
+<!-- ── DEMO / CHAT ── -->
+<section class="demo-section" id="demo">
   <div class="container">
-    <div class="stag">Live Chat — Powered by Real Python ML</div>
-    <h2>Talk to the <em>Real Model</em></h2>
-    <p class="sdesc">Every message is processed by the Python backend. The ML model classifies your intent in real time.</p>
+    <div class="section-head reveal">
+      <div class="tag">Live Demo</div>
+      <h2>Chat with the <em>Real Model</em></h2>
+      <p>Every message hits the Python backend. The ML model classifies your intent and responds — watch the intent badge appear below each reply.</p>
+    </div>
 
-    <div class="chat-wrapper">
+    <div class="chat-layout reveal">
       <!-- Sidebar -->
-      <div class="chat-sidebar">
-        <div class="sidebar-title">Quick Commands</div>
-        <div class="cmd-group">
-          <div class="cmd-label">⏰ General</div>
-          <button class="cmd-btn" data-msg="What time is it?">What time is it?</button>
-          <button class="cmd-btn" data-msg="What's today's date?">What's today's date?</button>
-          <button class="cmd-btn" data-msg="Tell me a joke">Tell me a joke</button>
-          <button class="cmd-btn" data-msg="Calculate 150 plus 270">Calculate 150 plus 270</button>
-          <button class="cmd-btn" data-msg="Search for automotive AI">Search for automotive AI</button>
+      <div class="sidebar">
+        <div class="sb-title">Quick Commands</div>
+
+        <div class="sb-group">
+          <div class="sb-group-label">General</div>
+          <button class="sb-btn" data-msg="Hello">👋 Hello</button>
+          <button class="sb-btn" data-msg="What time is it?">⏰ What time is it?</button>
+          <button class="sb-btn" data-msg="What's today's date?">📅 What's today's date?</button>
+          <button class="sb-btn" data-msg="Calculate 150 plus 270">🧮 Calculate 150 + 270</button>
+          <button class="sb-btn" data-msg="Tell me a joke">😄 Tell me a joke</button>
+          <button class="sb-btn" data-msg="Search for automotive AI">🔍 Search automotive AI</button>
+          <button class="sb-btn" data-msg="What can you do?">❓ What can you do?</button>
         </div>
-        <div class="cmd-group">
-          <div class="cmd-label">🏭 Factory</div>
-          <button class="cmd-btn factory" data-msg="Report defect on line 3">Report defect on line 3</button>
-          <button class="cmd-btn factory" data-msg="Check status of line 2">Check status of line 2</button>
-          <button class="cmd-btn factory" data-msg="Request maintenance for machine 7">Maintenance for machine 7</button>
-          <button class="cmd-btn factory" data-msg="Log shift handover notes">Log shift handover</button>
-          <button class="cmd-btn factory" data-msg="Total units this shift">Total units this shift</button>
-        </div>
-        <div class="cmd-group">
-          <div class="cmd-label">❓ Help</div>
-          <button class="cmd-btn" data-msg="What can you do?">What can you do?</button>
-          <button class="cmd-btn" data-msg="Hello">Hello</button>
-          <button class="cmd-btn" data-msg="Goodbye">Goodbye</button>
+
+        <div class="sb-group">
+          <div class="sb-group-label">Factory (Ajin)</div>
+          <button class="sb-btn factory" data-msg="Report defect on line 3">🏭 Defect on line 3</button>
+          <button class="sb-btn factory" data-msg="Check status of line 2">📊 Status of line 2</button>
+          <button class="sb-btn factory" data-msg="Request maintenance for machine 7">🔧 Maintenance machine 7</button>
+          <button class="sb-btn factory" data-msg="Log shift handover notes">📝 Log shift notes</button>
+          <button class="sb-btn factory" data-msg="Total units this shift">📦 Total units today</button>
         </div>
       </div>
 
       <!-- Chat window -->
-      <div class="chat-main">
-        <div class="chat-topbar">
-          <div class="chat-info">
+      <div class="chat-window">
+        <div class="chat-bar">
+          <div class="chat-bar-left">
             <div class="chat-avatar">AI</div>
             <div>
-              <div class="chat-name">Virtual Personal Assistant</div>
-              <div class="chat-sub"><span class="online-dot"></span> Python ML Model Active</div>
+              <div class="chat-name-text">Virtual Personal Assistant</div>
+              <div class="chat-status">
+                <div class="status-online"></div>
+                Python ML Model Active
+              </div>
             </div>
           </div>
-          <button class="clear-btn" id="clearChat">Clear</button>
+          <button class="chat-clear" id="clearChat">Clear</button>
         </div>
 
         <div class="chat-messages" id="chatMessages">
           <div class="msg-row bot">
-            <div class="msg-avatar">AI</div>
-            <div class="msg-content">
-              <div class="msg-bubble">
+            <div class="m-avatar">AI</div>
+            <div class="m-body">
+              <div class="m-bubble">
                 Hello! I'm your Virtual Personal Assistant powered by a real Python ML model. 
-                Type any command and I'll classify your intent using TF-IDF + Logistic Regression! 🤖
+                Type any command and I'll classify your intent using TF-IDF + Logistic Regression. 
+                Try the factory commands on the left — they're specific to Ajin Industry workflows! 🤖
               </div>
             </div>
           </div>
         </div>
 
-        <div class="chat-input-area">
+        <div class="chat-input-bar">
           <input type="text" id="chatInput" class="chat-input" placeholder="Type your command…" autocomplete="off"/>
           <button class="send-btn" id="sendBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
         </div>
       </div>
@@ -216,62 +232,72 @@ def predict(self, command):
   </div>
 </section>
 
-<!-- DASHBOARD -->
-<section class="dashboard" id="dashboard">
+<!-- ── DASHBOARD ── -->
+<section class="dashboard-section" id="dashboard">
   <div class="container">
-    <div class="stag">Factory Dashboard</div>
-    <h2>Live <em>Data</em></h2>
-    <p class="sdesc">Every defect report and maintenance request you submit through the chat is saved to the database and shown here in real time.</p>
+    <div class="section-head reveal">
+      <div class="tag">Factory Dashboard</div>
+      <h2>Live <em>Database</em></h2>
+      <p>Every defect and maintenance ticket you submit via chat is saved to SQLite and shown here in real time.</p>
+    </div>
 
-    <div class="dash-grid">
+    <div class="dash-grid reveal">
       <div class="dash-card">
-        <div class="dash-header">
-          <span class="dash-title">🏭 Defect Reports</span>
-          <button class="refresh-btn" id="refreshDefects">Refresh</button>
+        <div class="dash-card-head">
+          <div class="dash-card-title">🏭 Defect Reports</div>
+          <button class="dash-refresh" id="refreshDefects">Refresh</button>
         </div>
-        <div class="dash-table" id="defectTable">
-          <div class="table-empty">No defect reports yet.<br>Try: "Report defect on line 3"</div>
+        <div class="dash-body" id="defectBody">
+          <div class="empty-state">
+            <div class="empty-icon">🏭</div>
+            <div class="empty-text">No defect reports yet.</div>
+            <div class="empty-hint">Try: "Report defect on line 3"</div>
+          </div>
         </div>
       </div>
 
       <div class="dash-card">
-        <div class="dash-header">
-          <span class="dash-title">🔧 Maintenance Tickets</span>
-          <button class="refresh-btn" id="refreshMaint">Refresh</button>
+        <div class="dash-card-head">
+          <div class="dash-card-title">🔧 Maintenance Tickets</div>
+          <button class="dash-refresh" id="refreshMaint">Refresh</button>
         </div>
-        <div class="dash-table" id="maintTable">
-          <div class="table-empty">No maintenance tickets yet.<br>Try: "Maintenance for machine 7"</div>
+        <div class="dash-body" id="maintBody">
+          <div class="empty-state">
+            <div class="empty-icon">🔧</div>
+            <div class="empty-text">No maintenance tickets yet.</div>
+            <div class="empty-hint">Try: "Maintenance for machine 7"</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="dash-card model-card">
-      <div class="dash-header">
-        <span class="dash-title">🧠 Model Information</span>
-        <button class="refresh-btn" id="refreshStats">Refresh</button>
+    <div class="dash-card reveal">
+      <div class="dash-card-head">
+        <div class="dash-card-title">🧠 Model Information</div>
+        <button class="dash-refresh" id="refreshStats">Refresh</button>
       </div>
-      <div class="model-stats" id="modelStats">
-        <div class="mstat"><span class="mkey">Algorithm</span><span class="mval" id="mAlgo">Loading…</span></div>
-        <div class="mstat"><span class="mkey">Accuracy</span><span class="mval" id="mAcc">Loading…</span></div>
-        <div class="mstat"><span class="mkey">Total Intents</span><span class="mval" id="mInt">Loading…</span></div>
-        <div class="mstat"><span class="mkey">Intent Classes</span><span class="mval" id="mClasses">Loading…</span></div>
+      <div class="model-stats-grid" id="modelStats">
+        <div class="mstat"><span class="mstat-key">Algorithm</span><span class="mstat-val" id="mAlgo">Loading…</span></div>
+        <div class="mstat"><span class="mstat-key">Accuracy</span><span class="mstat-val" id="mAcc">Loading…</span></div>
+        <div class="mstat"><span class="mstat-key">Total Intents</span><span class="mstat-val" id="mInt">Loading…</span></div>
+        <div class="mstat"><span class="mstat-key">Classes</span><span class="mstat-val" id="mClasses" style="font-size:11px">Loading…</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">VPA<span class="dot">.</span></div>
-      <div class="footer-text">
-        Virtual Personal Assistant · Python + Flask + Machine Learning<br>
-        <small>Built for Ajin Industry Interview Presentation</small>
+      <div class="footer-logo">VPA.</div>
+      <div class="footer-copy">
+        Virtual Personal Assistant<br>
+        <span>Python · Flask · TF-IDF · Logistic Regression · SQLite</span>
       </div>
       <div class="footer-stack">
-        <span>Python</span><span>Flask</span><span>TF-IDF</span>
-        <span>Logistic Regression</span><span>SQLite</span><span>HTML/CSS/JS</span>
+        <span>Python</span><span>Flask</span><span>scikit-learn</span>
+        <span>TF-IDF</span><span>Logistic Reg</span><span>SQLite</span>
       </div>
     </div>
   </div>
