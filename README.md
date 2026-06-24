@@ -129,15 +129,18 @@ Frontend Dashboard
 
 ---
 
-## API Endpoints
-
-### Chat Endpoint
-
-```http
-POST /chat
-
 ## Author
 
 Samandar Abdujabbarov
 
 GitHub: https://github.com/smndr-abd
+
+---
+
+## API Endpoints
+
+### Chat Endpoint
+
+```http
+POST /chat 
+
