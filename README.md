@@ -1,143 +1,140 @@
 # VPA Flask
 
-A Virtual Personal Assistant (VPA) web application built with Flask. This project provides an interactive AI-powered assistant through a simple web interface, allowing users to ask questions, receive intelligent responses, and interact with AI services in real time.
+# VPA Flask – ML-Powered Factory Assistant
+
+A Machine Learning-powered Factory Assistant built with Flask and scikit-learn. The application classifies user commands using Natural Language Processing (NLP), executes factory-related operations, and displays real-time data through an interactive dashboard.
+
+---
 
 ## Features
 
-* Flask-based web application
-* Clean and responsive user interface
-* AI-powered conversational assistant
-* Real-time user interactions
-* Easy deployment and customization
-* Environment variable support for API keys
-* Lightweight and beginner-friendly architecture
+### Machine Learning & NLP
+- Intent Classification using Logistic Regression
+- Text Vectorization using TF-IDF
+- Confidence Score Calculation
+- Natural Language Command Processing
+- Multi-Class Classification Model
+- Real-Time Prediction Pipeline
 
-## Tech Stack
+### Virtual Assistant Functions
+- Greetings
+- Time and Date Queries
+- Search Commands
+- Calculator
+- Weather Information
+- Jokes
+- Help Menu
+- Farewell Responses
 
-* Python
-* Flask
-* HTML/CSS
-* JavaScript
-* OpenAI API (optional)
-* Jinja2 Templates
+### Factory Operations
+- Defect Reporting
+- Production Status Monitoring
+- Maintenance Request Management
+- Shift Log Recording
+- Real-Time Factory Dashboard
 
-## Project Structure
+### Frontend Features
+- Interactive Chat Interface
+- Intent Badge Display
+- Confidence Score Display
+- Typing Animation
+- Architecture Visualization
+- Responsive Design
+- Scroll Reveal Animations
+- Auto-Updating Dashboard
 
-```text
-VPA_Flask/
+### Database Features
+- SQLite Database Integration
+- Defect Report Storage
+- Maintenance Ticket Storage
+- Historical Data Retrieval
+- Real-Time Dashboard Updates
+
+---
+
+## Technologies Used
+
+### Backend
+- Python
+- Flask
+- SQLite
+
+### Machine Learning
+- scikit-learn
+- TF-IDF Vectorizer
+- Logistic Regression
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript (ES6)
+
+### APIs & Communication
+- REST API
+- JSON
+- Fetch API
+
+---
+
+## Architecture
+
+User
 │
-├── app.py
-├── requirements.txt
-├── .env
-├── static/
-│   ├── css/
-│   ├── js/
-│   └── images/
+▼
+HTML / CSS / JavaScript
 │
-├── templates/
-│   └── index.html
+▼
+Fetch API
 │
-└── README.md
-```
+▼
+Flask Backend
+│
+▼
+TF-IDF Vectorizer
+│
+▼
+Logistic Regression Model
+│
+▼
+Intent Prediction
+│
+▼
+SQLite Database
+│
+▼
+JSON Response
+│
+▼
+Frontend Dashboard
 
-## Installation
+---
 
-### 1. Clone the repository
+## Supported Intents
 
-```bash
-git clone https://github.com/your-username/VPA_Flask.git
-cd VPA_Flask
-```
+| Intent | Description |
+|----------|-------------|
+| greeting | Greetings |
+| time | Current time |
+| date | Current date |
+| search | Search queries |
+| calculate | Mathematical calculations |
+| joke | Random jokes |
+| weather | Weather information |
+| help | Available commands |
+| farewell | Exit conversation |
+| report_defect | Report factory defects |
+| check_status | Production status monitoring |
+| maintenance | Maintenance requests |
+| shift_log | Shift handover logging |
 
-### 2. Create a virtual environment
+---
 
-```bash
-python3 -m venv venv
-```
+## API Endpoints
 
-### 3. Activate the virtual environment
+### Chat Endpoint
 
-macOS/Linux:
-
-```bash
-source venv/bin/activate
-```
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-### 4. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Configure environment variables
-
-Create a `.env` file:
-
-```env
-OPENAI_API_KEY=your_api_key_here
-```
-
-### 6. Run the application
-
-```bash
-python app.py
-```
-
-or
-
-```bash
-python3 app.py
-```
-
-## Usage
-
-1. Start the Flask server.
-2. Open your browser.
-3. Navigate to:
-
-```text
-http://127.0.0.1:5000
-```
-
-4. Enter your message and interact with the assistant.
-
-## Example
-
-```text
-User: What is machine learning?
-
-Assistant: Machine learning is a branch of artificial intelligence that enables systems to learn patterns from data and improve their performance without being explicitly programmed.
-```
-
-## Future Improvements
-
-* Voice input and output
-* User authentication
-* Chat history storage
-* PDF document analysis
-* Multi-language support
-* Integration with external APIs
-* Dark mode UI
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to GitHub
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
+```http
+POST /chat
 
 ## Author
 
